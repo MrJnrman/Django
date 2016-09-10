@@ -6,7 +6,7 @@ from .models import Course
 # Create your views here.
 def course_list(request):
     courses = Course.objects.all()
-    object = ', '.join([str(course) for course in courses])
-    return HttpResponse(object)
+    # render(<request object>, <template path>, <context dictionary>)
+    return render(request, 'courses/course_list.html', {'courses': courses})
 
 
