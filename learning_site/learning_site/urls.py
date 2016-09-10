@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # allows the use of static files
 
 from . import views
 
@@ -24,3 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.hello_world),  # ^$ means empty string
 ]
+
+# checks to see if project is in debug mode
+# if yes, add static path to all files in static folders
+urlpatterns += staticfiles_urlpatterns()

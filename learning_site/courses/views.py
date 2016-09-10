@@ -9,4 +9,9 @@ def course_list(request):
     # render(<request object>, <template path>, <context dictionary>)
     return render(request, 'courses/course_list.html', {'courses': courses})
 
+#  pk come from the url and represents the primary key for a given course
+def course_detail(request, pk):
+    #  django automatically knows that pk is out primary key and applies to the appropriate field in the course table
+    course = Course.objects.get(pk=pk)
+    return render(request, 'courses/course_detail.html', {'course': course})
 
