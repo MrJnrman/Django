@@ -9,6 +9,12 @@
         <h2><a href="{% url 'courses:detail' pk=step.course.pk %}">{{ step.course.title }}</a></h2>
         <h3>{{ step.title }}</h3>
         <h4>{{ step.description }}</h4>
-        {{ step.content|linebreaks }}
+        <!--
+         with allows us to alias any variable name for use within its blocks
+         wordcount gives use the word count of any variable its used on
+         -->
+        {% with con=step.content %}
+            {{ con|linebreaks }} Content: {{ con|wordcount }}
+        {% endwith %}
     </article>
 {% endblock content %}

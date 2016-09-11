@@ -1,4 +1,7 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block static %}<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}"/> {% endblock static %}
 
 {% block title %}
     Available Courses
