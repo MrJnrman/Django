@@ -21,9 +21,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # allows th
 from . import views
 
 urlpatterns = [
-    url(r'courses/', include('courses.urls')),
+    url(r'courses/', include('courses.urls', namespace='courses')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.hello_world),  # ^$ means empty string
+    url(r'^$', views.hello_world, name='home'),  # ^$ means empty string
 ]
 
 # checks to see if project is in debug mode

@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block title %}
+    Available Courses
+{% endblock title %}
+
+{% block content %}
+<div class="cards">
     {% for course in courses %}
-        <h2>{{ course.title }}</h2>
-        <h3>{{ course.description }}</h3>
+    <div class="card">
+        <header><a href="{% url 'courses:detail' pk=course.pk %}">{{ course.title }}</a></header>
+        <div class="card-copy">
+            <h3>{{ course.description }}</h3>
+        </div>
+    </div>
     {% endfor %}
-</body>
-</html>
+</div>
+{% endblock content %}
