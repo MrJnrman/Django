@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% load humanize %}
+{% load humanize course_extras %}
 
 {% block title %}
     {{ course.title }}
@@ -8,7 +8,7 @@
 {% block content %}
     <article>
         <h2>{{ course.title }}</h2>
-        {{ course.description }}
+        {{ course.description|markdown_to_html }}
 
         <!--
         |join: works just like the default python join

@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load course_extras %}
 
 {% block title %}
     {{ step.course.title }}
@@ -12,9 +13,10 @@
         <!--
          with allows us to alias any variable name for use within its blocks
          wordcount gives use the word count of any variable its used on
+         filter chaining uses the previous output from filter for the next
          -->
         {% with con=step.content %}
-            {{ con|linebreaks }} Content: {{ con|wordcount }}
+            {{ con|linebreaks }} Content: {{ con|wordcount }} words. Estimated time to complete {{ con|wordcount|time_estimate }} minute{{ con|wordcount|time_estimate|pluralize }}.
         {% endwith %}
     </article>
 {% endblock content %}
